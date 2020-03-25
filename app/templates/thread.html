@@ -2,7 +2,7 @@
 {% block content %}
 <h1>掲示板</h1>
 
-<form action="/result" method="post">
+<form action="/thread" method="post">
     <input type="hidden" name="thread" value="{{ thread }}">
     <label for="article">投稿</label>
     <!-- <input type="text" name="article"> -->
@@ -10,7 +10,7 @@
     <p></p>
     <label for="name">名前</label>
     <input type="text" name="name">
-    <button type="submit">送信する</button>
+    <button type="submit" >送信する</button>
 </form>
 
 <h2>投稿一覧 {{ thread }}</h2>
@@ -26,7 +26,7 @@
     <tbody>
         {% for f in articles: %}
             <tr>
-                <th scope="row">{{ f.pub_date }}</th>
+                <th scope="row">{{ f.datetime }}</th>
                 <td>{{ f.name }}</td>
                 <td>{{ f.article }}</td>
             </tr>
