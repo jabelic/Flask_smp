@@ -2,9 +2,7 @@
 from flask import Flask,render_template, request
 import sqlite3
 from datetime import datetime
-#import pymysql.cursors
-
-
+#from sqlalchemy import Column, Integer, String, Text, DateTime, SQLAlchemy
 
 
 #Flaskオブジェクトの生成
@@ -22,38 +20,29 @@ def hello():
 def index():
     return render_template("thread.html", thread='hoge')
 
+
 class Article:
     def __init__(self, datetime, name, article):
-        #self.id = id
         self.datetime = datetime
         self.name = name
         self.article = article
 
 
-''' 
-def register(self, datetime, name, article):
-    conn = sqlite3.connect('sample1.db')
-    cur = conn.cursor()
-    insert_sql = 'insert into board(datetime, name, article) values (?,?,?)'
-    users = [datetime, name, article]
-    cur.executemany(insert_sql, users)
-    conn.commit()
-'''
+
 
 @app.route("/thread", methods=["POST"])
 def result():
     time = datetime.now()
     article = request.form['article']
     name = request.form['name']
-    #register(time, name, article)
     conn = sqlite3.connect('sample1.db')
     cur = conn.cursor()
     insert_sql = 'insert into board(datetime, name, article) values (?,?,?)'
-    users = [datetime, name, article]
+    users = [time, name, article]
     cur.executemany(insert_sql, users)
     conn.commit()
 
-
+#ValueError: parameters are of unsupported type
 
 
 
