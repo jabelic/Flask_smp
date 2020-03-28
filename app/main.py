@@ -29,16 +29,16 @@ class Article:
 
 
 
-
 @app.route("/thread", methods=["POST"])
 def result():
     time = datetime.now()
     article = request.form['article']
     name = request.form['name']
-    conn = sqlite3.connect('sample1.db')
+    conn = sqlite3.connect('./app/sample1.db')
     cur = conn.cursor()
     insert_sql = 'insert into board(datetime, name, article) values (?,?,?)'
     users = [time, name, article]
+    print(users)
     cur.executemany(insert_sql, users)
     conn.commit()
 
