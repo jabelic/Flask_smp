@@ -36,9 +36,9 @@ def result():
     name = request.form['name']
     conn = sqlite3.connect('./app/sample1.db')
     cur = conn.cursor()
-    insert_sql = 'insert into board(datetime, name, article) values (?,?,?)'
+    insert_sql = 'insert into board (datetime, name, article) values (?,?,?)'
     #insert_sql = 'insert into board(name, article) values (?,?)'
-    users = [times, name, article]
+    users = [(times, name, article)]
     #users = [name, article]
     print(users)
     cur.executemany(insert_sql, users)
