@@ -16,8 +16,11 @@ def hello():
 
 
 #「/thread」へアクセスがあった場合に、「thread.html」を返す
-@app.route("/thread")
+@app.route("/thread", methods=["GET"])
 def index():
+    #conn = sqlite3.connect('./app/sample1.db')
+    #cur = conn.cursor()
+    #articles = cur.execute("select * from board")
     return render_template("thread.html", thread='hoge')
 
 
@@ -28,7 +31,6 @@ class Article:
         self.article = article
 
 
-
 @app.route("/thread", methods=["POST"])
 def result():
     times = datetime.now()
@@ -37,14 +39,13 @@ def result():
     conn = sqlite3.connect('./app/sample1.db')
     cur = conn.cursor()
     insert_sql = 'insert into board (datetime, name, article) values (?,?,?)'
-    #insert_sql = 'insert into board(name, article) values (?,?)'
     users = [(times, name, article)]
-    #users = [name, article]
-    print(users)
+    #users = [(datetime.now(), request.form['name'], request.form['article'])]
     cur.executemany(insert_sql, users)
+    articles = cur.execute("select * from board")
     conn.commit()
-
-#ValueError: parameters are of unsupported type
+    return render_template("thread.html",
+                                articles=articles)
 
 
 

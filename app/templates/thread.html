@@ -16,19 +16,21 @@
 <h2>投稿一覧 {{ thread }}</h2>
 
     <table class="table">
-    <thead class="thead-dark">
+    <thead class="thead-light">
         <tr>
+        <th>id</th>
         <th>日付</th>
         <th>名前</th>
         <th>投稿</th>
         </tr>
     </thead>
     <tbody>
-        {% for f in articles: %}
+        {% for f in articles %}
             <tr>
-                <th scope="row">{{ f.datetime }}</th>
-                <td>{{ f.name }}</td>
-                <td>{{ f.article }}</td>
+                <td>{{ f[0] }}</td>
+                <th scope="row">{{ f[1] }}</th>
+                <td>{{ f[2] }}</td>
+                <td>{{ f[3] }}</td>
             </tr>
         {% endfor %}
     </tbody>
