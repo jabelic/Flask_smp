@@ -28,15 +28,20 @@
         {% for f in articles %}
             <tr>
                 <td>{{ f[0] }}</td>
-                <th scope="row">{{ f[1] }}</th>
-                <td>{{ f[2] }}</td>
+                <th>{{ f[1] }}</th>
+                <td scope="row">{{ f[2] }}</td>
                 <td>{{ f[3] }}</td>
+                <td>
+                    <form action="/thread" method="get">
+                        {{ f[0] }}
+                    </form>
+                </td>
             </tr>
         {% endfor %}
     </tbody>
     </table>
 
 <form action="/" method="get">
-    <button type="submit">戻る</button>
+    <!--button type="submit">戻る</button-->
 </form>
 {% endblock %}
