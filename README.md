@@ -7,7 +7,7 @@ FlaskとSQLiteのチュートリアルとして作った掲示板です。
 
 ## Demo
 
-![](Bulletin_board.png)
+![](https://github.com/jabelic/Flask_smp/blob/master/bulletin_board.png)
 
 
 ## Requirement
