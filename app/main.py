@@ -18,17 +18,7 @@ def hello():
 #「/thread」へアクセスがあった場合に、「thread.html」を返す
 @app.route("/thread", methods=["GET"])
 def index():
-    #conn = sqlite3.connect('./app/sample1.db')
-    #cur = conn.cursor()
-    #articles = cur.execute("select * from board")
     return render_template("thread.html", thread='hoge')
-
-
-class Article:
-    def __init__(self, datetime, name, article):
-        self.datetime = datetime
-        self.name = name
-        self.article = article
 
 
 @app.route("/thread", methods=["POST"])
