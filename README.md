@@ -13,6 +13,7 @@ FlaskとSQLiteのチュートリアルとして作った掲示板です。
 ## Requirement
 
 Jinja2 == 2.10.1
+
 Flask == 1.0.2
 
 
